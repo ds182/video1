@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica de Listening</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS';
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a; /* Fondo oscuro */
+            color: #fff; /* Texto blanco */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+                     
+        h1 {
+            font-family: 'Comic Sans MS'; /* Se elimina el tipo de fuente cursive */
+            font-style: italic; /* Se agrega la propiedad para cursiva */
+            font-weight: bold; /* Se mantiene la negrita */
+            color: #ec1502;
+            margin-bottom: 20px;
+            background-color: #f8e1fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        #video-container {
+            width: 500px;
+            height: 281px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #player {
+            width: 100%;
+            height: 100%;
+        }
+
+        #progress-bar {
+            display: none;
+            width: 80%;
+            max-width: 800px;
+            height: 8px;
+            background-color: #ff6f61;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        #progress {
+            width: 0;
+            height: 100%;
+            background-color: #ddd;
+            transition: width 0.3s ease;
+        }
+
+        #current-time {
+            display: none;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+        }
+
+        #custom-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #custom-controls button {
+            cursor: pointer;
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #custom-controls button:hover {
+            background-color: #ff4f40;
+        }
+
+        .info-container {
+            display: none;
+            width: 80%;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #04f8f8;
+            color: #aa0505;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-container h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .info-container p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>LISTENING</h1>
+
+    <div id="video-container">
+        <div id="player"></div>
+    </div>
+
+    <div id="progress-bar">
+        <div id="progress"></div>
+    </div>
+    <div id="current-time">0:00</div>
+
+    <div id="info-container1" class="info-container">
+        <div>
+            <h2>Everyone, stay calm.</h2>
+            <p>Todos, mantengan la calma.</p>
+        </div>
+    </div>
+
+    <div id="info-container2" class="info-container">
+        <div>
+            <h2>We're taking over the ship.</h2>
+            <p>Tomaremos el barco.</p>
+        </div>
+    </div>
+
+    <div id="info-container3" class="info-container">
+        <div>
+            <h2>Aye! Avast!</h2>
+            <p>¡Sí! ¡Alto!</p>
+        </div>
+    </div>
+
+    <div id="info-container4" class="info-container">
+        <div>
+            <h2>This ship cannot be crewed by two men.</h2>
+            <p>Este barco no puede ser tripulado por dos hombres.</p>
+        </div>
+    </div>
+
+    <div id="info-container5" class="info-container">
+        <div>
+            <h2>You'll never make it out of the bay.</h2>
+            <p>Nunca lograrás salir de la bahía.</p>
+        </div>
+    </div>
+
+    <div id="info-container6" class="info-container">
+        <div>
+            <h2>Son, I'm Captain Jack Sparrow.</h2>
+            <p>Hijo, soy el Capitán Jack Sparrow.</p>
+        </div>
+    </div>
+    
+    <div id="info-container7" class="info-container">
+        <div>
+            <h2>Savvy?</h2>
+            <p>¿Entiendes?</p>
+        </div>
+    </div>
+
+    <div id="info-container8" class="info-container">
+        <div>
+            <h2>Commodore!</h2>
+            <p>¡Comodoro!</p>
+        </div>
+    </div>
+
+    <div id="info-container9" class="info-container">
+        <div>
+            <h2>Sir, they're taking the Dauntless!</h2>
+            <p>¡Señor, se están llevando el Dauntless!</p>
+        </div>
+    </div>
+
+    <div id="info-container10" class="info-container">
+        <div>
+            <h2>Commodore! They've taken the ship!</h2>
+            <p>¡Comodoro! ¡Han tomado el barco!</p>
+        </div>
+    </div>
+
+    <div id="info-container11" class="info-container">
+        <div>
+            <h2>Sparrow and Turner! They're taking the Dauntless!</h2>
+            <p>¡Sparrow y Turner! ¡Están tomando el Dauntless!</p>
+        </div>
+    </div>
+
+    <div id="info-container12" class="info-container">
+        <div>
+            <h2>Rash, Turner. Too rash.</h2>
+            <p>Precipitado, Turner. Demasiado precipitado.</p>
+        </div>
+    </div>
+
+    <div id="info-container13" class="info-container">
+        <div>
+            <h2>That is, without doubt, the worst pirate I have ever seen.</h2>
+            <p>Ese es, sin duda, el peor pirata que he visto.</p>
+        </div>
+    </div>
+
+    <div id="info-container14" class="info-container">
+        <div>
+            <h2>Here they come.</h2>
+            <p>Aquí vienen.</p>
+        </div>
+    </div>
+
+    <script>
+        var player;
+        var progressInterval;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                width: '100%',
+                height: '100%',
+                videoId: 'GisjPwsvnAk', // Cambia esto por el ID de tu video
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 1,
+                    'showinfo': 0,
+                    'rel': 0,
+                    'fs': 1,
+                    'loop': 0
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            console.log('Reproductor listo');
+            progressInterval = setInterval(updateProgressBar, 500);
+        }
+
+        function togglePlayPause() {
+            if (player.getPlayerState() == 1) {
+                player.pauseVideo();
+            } else {
+                player.playVideo();
+            }
+
+            // Cambiar el texto del botón Play/Pause
+            var playPauseButton = document.getElementById('playPauseButton');
+            playPauseButton.innerText = (player.getPlayerState() == 1) ? 'Continuar' : 'Pausa';
+        }
+
+        function rewind() {
+            var currentTime = player.getCurrentTime();
+            player.seekTo(currentTime - 5, true);
+        }
+
+        function fastForward() {
+            var currentTime = player.getCurrentTime();
+            player.seekTo(currentTime + 5, true);
+        }
+
+        function updateProgressBar() {
+            var currentTime = player.getCurrentTime();
+            var duration = player.getDuration();
+            var progress = (currentTime / duration) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+
+            // Actualizar el tiempo actual
+            document.getElementById('current-time').innerText = formatTime(currentTime);
+
+            // Mostrar el contenedor de información entre el segundo 0 y 12
+            var infoContainer1 = document.getElementById('info-container1');
+            if (currentTime >= 0 && currentTime <= 12) {
+                infoContainer1.style.display = 'block';
+            } else {
+                infoContainer1.style.display = 'none';
+            }
+
+            // Mostrar el contenedor de información entre el segundo 12 y 14
+            var infoContainer2 = document.getElementById('info-container2');
+            if (currentTime > 12 && currentTime <= 14) {
+                infoContainer2.style.display = 'block';
+            } else {
+                infoContainer2.style.display = 'none';
+            }
+
+            // Mostrar el contenedor de información entre el segundo 14 y 19
+            var infoContainer3 = document.getElementById('info-container3');
+            if (currentTime > 14 && currentTime <= 19) {
+                infoContainer3.style.display = 'block';
+            } else {
+                infoContainer3.style.display = 'none';
+            }
+
+            // Mostrar el contenedor de información entre el segundo 19 y 21
+            var infoContainer4 = document.getElementById('info-container4');
+            if (currentTime > 19 && currentTime <= 21) {
+                infoContainer4.style.display = 'block';
+            } else {
+                infoContainer4.style.display = 'none';
+            }
+       
+             // Mostrar el contenedor de información entre el segundo 21 y 25
+            var infoContainer5 = document.getElementById('info-container5');
+            if (currentTime > 21 && currentTime <= 25) {
+                infoContainer5.style.display = 'block';
+            } else {
+                infoContainer5.style.display = 'none';
+            }
+
+            // Mostrar el contenedor de información entre el segundo 25 y 29
+            var infoContainer6 = document.getElementById('info-container6');
+            if (currentTime > 25 && currentTime <= 29) {
+                infoContainer6.style.display = 'block';
+            } else {
+                infoContainer6.style.display = 'none';
+            }
+
+            // Mostrar el contenedor de información entre el segundo 29 y 34
+            var infoContainer7 = document.getElementById('info-container7');
+            if (currentTime > 29 && currentTime <= 34) {
+                infoContainer7.style.display = 'block';
+            } else {
+                infoContainer7.style.display = 'none';
+            }
+
+            // Mostrar el contenedor de información entre el segundo 34 y 36
+            var infoContainer8 = document.getElementById('info-container8');
+            if (currentTime > 34 && currentTime <= 36) {
+                infoContainer8.style.display = 'block';
+            } else {
+                infoContainer8.style.display = 'none';
+            }
+
+            // Mostrar el contenedor de información entre el segundo 36 y 40
+            var infoContainer9 = document.getElementById('info-container9');
+            if (currentTime > 36 && currentTime <= 40) {
+                infoContainer9.style.display = 'block';
+            } else {
+                infoContainer9.style.display = 'none';
+            }
+
+            // Mostrar el contenedor de información entre el segundo 40 y 44
+            var infoContainer10 = document.getElementById('info-container10');
+            if (currentTime > 40 && currentTime <= 44) {
+                infoContainer10.style.display = 'block';
+            } else {
+                infoContainer10.style.display = 'none';
+            }
+
+            // Mostrar el contenedor de información entre el segundo 44 y 47
+            var infoContainer11 = document.getElementById('info-container11');
+            if (currentTime > 44 && currentTime <= 47) {
+                infoContainer11.style.display = 'block';
+            } else {
+                infoContainer11.style.display = 'none';
+            }
+
+            // Mostrar el contenedor de información entre el segundo 47 y 51
+            var infoContainer12 = document.getElementById('info-container12');
+            if (currentTime > 47 && currentTime <= 51) {
+                infoContainer12.style.display = 'block';
+            } else {
+                infoContainer12.style.display = 'none';
+            }
+
+            // Mostrar el contenedor de información entre el segundo 51 y 59
+            var infoContainer13 = document.getElementById('info-container13');
+            if (currentTime > 51 && currentTime <= 59) {
+                infoContainer13.style.display = 'block';
+            } else {
+                infoContainer13.style.display = 'none';
+            }
+
+            // Mostrar el contenedor de información entre el segundo 59 y 1:04
+            var infoContainer14 = document.getElementById('info-container14');
+            if (currentTime > 59 && currentTime <= 65) {
+                infoContainer14.style.display = 'block';
+            } else {
+                infoContainer14.style.display = 'none';
+            }
+        }
+
+        function formatTime(time) {
+            var minutes = Math.floor(time / 60);
+            var seconds = Math.floor(time % 60);
+            return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+        }
+
+         // (Código para que se repita el video)
+
+    function onPlayerStateChange(event) {
+        // Detecta el estado del reproductor al cambiar
+        if (event.data === YT.PlayerState.ENDED) {
+            // Si el video ha terminado, vuelve a reproducir
+            player.seekTo(0); // Ajusta a 0 segundos
+            player.playVideo();
+        }
+    }
+
+    function onPlayerReady(event) {
+        console.log('Reproductor listo');
+        progressInterval = setInterval(updateProgressBar, 500);
+        player.addEventListener('onStateChange', onPlayerStateChange);
+    }
+    </script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
